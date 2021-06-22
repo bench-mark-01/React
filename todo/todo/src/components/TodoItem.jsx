@@ -4,48 +4,50 @@ export const TodoItem = (props) => {
 
     const {todoItem, setTodoItem, filter} = props;
 
-    const onClickDelete = (index) => {
+    const onClickDelete = (targetItem) => {
         const newTodo = [...todoItem];
-        newTodo.splice(index, 1);
+        let targetIndex = newTodo.indexOf(targetItem);
+        newTodo.splice(targetIndex, 1);
         setTodoItem(newTodo);
     }
     
-    const onClickStatus = (index) =>{
+    const onClickStatus = (targetItem) => {
         const newTodo = [...todoItem];
-        if (newTodo[index].status){
-            newTodo[index].status = false;
-            setTodoItem(newTodo);
+        const item = newTodo.find((item => item.id === targetItem.id));
+        if(item.status){
+            item.status = false;
         }else{
-            newTodo[index].status = true;
-            setTodoItem(newTodo);
+            item.status = true;
         }
-    }
+        let targetIndex = newTodo.indexOf(targetItem);
+        newTodo[targetIndex] = item;
+        setTodoItem(newTodo);
+    };
 
-    const displayItems = todoItem.filter(item => {
+    let displayItems = todoItem.filter( item => {
         if (filter === 'all') return true;
         if (filter === 'working') return !item.status;
         if (filter === 'complete') return item.status;
+        return null;
     });
 
     return(
         displayItems.map((Todo,index) => {
             return (
-                <tbody key = {Todo.id}>
-                    <tr>
-                        <td>
-                            {index}
-                        </td>
-                        <td>
-                            {Todo.task}
-                        </td>
-                        <td>
-                            <input onClick = {() => onClickStatus(index)} type="button" value = {Todo.status ? "完了" : "作業中"} id = {Todo.id} />
-                        </td>
-                        <td>
-                            <input onClick = {() => onClickDelete(index)}type="button" value="削除" id={Todo.id} />
-                        </td>
-                    </tr>
-                </tbody>
+                <tr key = {Todo.id}>
+                    <td>
+                        {index}
+                    </td>
+                    <td>
+                        {Todo.task}
+                    </td>
+                    <td>
+                        <input onClick = {() => onClickStatus(Todo)} type="button" value = {Todo.status ? "完了" : "作業中"} id = {Todo.id} />
+                    </td>
+                    <td>
+                        <input onClick = {() => onClickDelete(Todo)}type="button" value="削除" id={Todo.id} />
+                    </td>
+                </tr>
             );
         })
     );

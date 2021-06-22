@@ -17,16 +17,22 @@ export const Todo = () => {
                     ToDoリスト
                 </h1>
             </header>
+            <table>
+                <thead>  
+                    <tr>
+                        <th>ID</th>
+                        <th>コメント</th>
+                        <th>状態</th>
+                    </tr>
+                </thead>
+            </table>
 
-            <tr>
-                <th>ID</th>
-                <th>コメント</th>
-                <th>状態</th>
-            </tr>
-            
             <Filter filter = {filter} setFilter = {setFilter}/>
-            
-            <TodoItem key = {todoItem.index} todoItem = {todoItem} setTodoItem = {setTodoItem} filter = {filter}/>
+            <table>
+                <thead>
+                    <TodoItem key = {todoItem.index} todoItem = {todoItem} setTodoItem = {setTodoItem} filter = {filter}/>
+                </thead>
+            </table>
 
             <InputTodo todoItem = {todoItem} setTodoItem = {setTodoItem} inputTodo = {inputTodo} setInputTodo = {setInputTodo}/>
         </>
