@@ -12,29 +12,29 @@ export const Todo = () => {
     
     return (
         <>
-        <header>
-            <h1>
-                ToDoリスト
-            </h1>
-        </header>
-        <table>
-            <thead>  
-                <tr>
-                    <th>ID</th>
-                    <th>コメント</th>
-                    <th>状態</th>
-                </tr>
-            </thead>
-        </table>
+            <header>
+                <h1>
+                    ToDoリスト
+                </h1>
+            </header>
+            <table>
+                <thead>  
+                    <tr>
+                        <th>ID</th>
+                        <th>コメント</th>
+                        <th>状態</th>
+                    </tr>
+                </thead>
+            </table>
 
-        <RadioButtonForm radioButtonForm={radioButtonForm} setRadioButtonForm={setRadioButtonForm}/>
-        <table>
-            <thead>
-                <DisplayTodos key={todoItems.id} todoItems={todoItems} setTodoItems={setTodoItems} radioButtonForm={radioButtonForm}/>
-            </thead>
-        </table>
+            <RadioButtonForm radioButtonForm={radioButtonForm} setRadioButtonForm={setRadioButtonForm}/>
+            <table>
+                <thead>
+                    <DisplayTodos key={todoItems.id} todoItems={todoItems} setTodoItems={setTodoItems} radioButtonForm={radioButtonForm}/>
+                </thead>
+            </table>
 
-        <InputTodo todoItems={todoItems} setTodoItems={setTodoItems} inputTodo={inputTodo} setInputTodo={setInputTodo}/>
+            <InputTodo todoItems={todoItems} setTodoItems={setTodoItems} inputTodo={inputTodo} setInputTodo={setInputTodo}/>
         </>
     );
 }

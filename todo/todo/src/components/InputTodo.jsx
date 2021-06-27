@@ -20,11 +20,11 @@ export const InputTodo = (props) => {
 
     return (
         <>
-        <h2>
-            新規タスクの追加
-        </h2>
-        <input type='text' id='task' value={inputTodo} onChange={receiveInputTodo}/>
-        <input type='submit' value='追加' id='submit' onClick={addTodo} />   
+            <h2>
+                新規タスクの追加
+            </h2>
+            <input type='text' id='task' value={inputTodo} onChange={receiveInputTodo}/>
+            <input type='submit' value='追加' id='submit' onClick={addTodo} />   
         </>
     );
 }
